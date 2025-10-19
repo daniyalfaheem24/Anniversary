@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daniyal ❤️ Maham 1st Anniversary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Lightbox2 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <!-- Favicon (Heart) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+  <style>
+    body {
+      min-height: 100vh;
+      background: radial-gradient(ellipse at top left, #5b003a 0%, #180010 70%) fixed;
+      background-color: #180010;
+      overflow-x: hidden;
+    }
+    .vip-glow-border {
+      border: 3px solid #d4af37;
+      box-shadow: 0 0 32px 8px #b90d3b99, 0 0 18px #d4af3799 inset;
+      animation: shine 3s infinite;
+      background: rgba(24,0,16,0.55);
+      backdrop-filter: blur(8px);
+    }
+    @keyframes shine {
+      0% { box-shadow: 0 0 24px 8px #d4af37, 0 0 0 #b90d3b; }
+      50% { box-shadow: 0 0 48px 16px #fffae5, 0 0 32px 4px #b90d3b; }
+      100% { box-shadow: 0 0 24px 8px #d4af37, 0 0 0 #b90d3b; }
+    }
+    .gold-text {
+      color: #fffae5;
+      text-shadow: 0 0 24px #d4af37, 0 0 4px #fff, 0 0 12px #b90d3b99;
+    }
+    .glow {
+      text-shadow: 0 0 16px #e83e8c, 0 0 44px #d4af37, 0 0 16px #fff7, 0 0 12px #fff;
+      color: #fff;
+      font-weight: bold;
+    }
+    .finale {
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      text-align: center;
+      color: #fff;
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      filter: drop-shadow(0 2px 12px #d4af37cc);
+      text-shadow: 0 0 24px #d4af37, 0 0 64px #b90d3b, 0 0 32px #8a1832, 0 0 16px #fff;
+    }
+    .vip-btn {
+      background: linear-gradient(90deg, #b90d3b 0%, #d4af37 100%);
+      color: #fff;
+      font-weight: bold;
+      border-radius: 9999px;
+      box-shadow: 0 0 16px #d4af3755;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .vip-btn:hover {
+      transform: scale(1.06) rotate(-2deg);
+      box-shadow: 0 0 32px #d4af3799, 0 0 16px #b90d3b77;
+    }
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      z-index: 99;
+      width: 14px; height: 14px;
+      background: radial-gradient(circle, #fff 60%, #d4af37 100%);
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: sparkle 0.8s linear;
+    }
+    @keyframes sparkle {
+      0% { opacity: 0.9; transform: scale(0.7);}
+      70% { opacity: 0.7; transform: scale(1.3);}
+      100% { opacity: 0; transform: scale(0.2);}
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #322;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #b90d3b 0%, #d4af37 100%);
+      border-radius: 8px;
+    }
+    .lb-data .lb-caption {
+      color: #d4af37 !important;
+      font-weight: 600;
+      text-shadow: 0 0 10px #b90d3b;
+    }
+    /* Entrance Curtain */
+    .curtain {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 99999;
+      background: linear-gradient(90deg, #180010 0%, #b90d3b 50%, #180010 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: opacity 1.2s cubic-bezier(.78,.17,.13,.85);
+    }
+    .curtain-gates {
+      width: 90vw; height: 80vh; display: flex; position: relative;
+    }
+    .gate {
+      flex: 1 1 0;
+      background: linear-gradient(120deg, #180010 30%, #d4af37 100%);
+      border-radius: 32px 0 0 32px;
+      box-shadow: 0 0 64px #d4af3777;
+      margin: 0 8px;
+      transition: transform 1.2s cubic-bezier(.78,.17,.13,.85);
+    }
+    .gate.right { border-radius: 0 32px 32px 0; background: linear-gradient(-120deg, #180010 30%, #d4af37 100%);}
+    .gate-content {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      z-index: 2; text-align: center;
+    }
+    .gate-content h1 {
+      font-size: 2.3rem;
+      color: #fff;
+      text-shadow: 0 0 28px #d4af37, 0 0 8px #fff7;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .gate-content img {
+      margin: 0 auto 24px auto;
+    }
+    .hidden { display: none !important; }
+    /* Timeline responsive fix */
+    @media (max-width: 768px) {
+      .timeline:before { left: 16px !important; }
+    }
+    /* 3D flip card */
+    .flip-card {
+      background: transparent;
+      perspective: 1200px;
+      width: 100%;
+      min-height: 270px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      min-height: 270px;
+      transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      min-height: 270px;
+      backface-visibility: hidden;
+      border-radius: 1.5rem;
+      overflow: hidden;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background: #180010;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-size: 1.3rem;
+    }
+    .flip-card-front {
+      background: linear-gradient(120deg, #b90d3b 20%, #d4af37 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    /* Infinity Loop */
+    .infinity-container {
+      position: relative;
+      width: 240px;
+      height: 100px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+    /* Progress Bar */
+    .progress-container {
+      width: 100%;
+      background: #1a0015;
+      border-radius: 9999px;
+      margin: 0 auto;
+      max-width: 380px;
+      box-shadow: 0 0 24px #d4af3799;
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .progress-bar {
+      height: 12px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #b90d3b, #d4af37 85%);
+      box-shadow: 0 0 18px #d4af37, 0 0 8px #b90d3b;
+      transition: width 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .milestone-dot {
+      width: 22px; height: 22px;
+      background: #d4af37;
+      border: 4px solid #b90d3b;
+      border-radius: 50%;
+      position: absolute;
+      top: -6px;
+      box-shadow: 0 0 18px #d4af37cc;
+      z-index: 2;
+    }
+    .milestone-dot.crown::before {
+      content: "";
+      display: block;
+      width: 24px; height: 18px;
+      background: url('https://img.icons8.com/fluency/48/000000/crown.png') no-repeat center center/contain;
+      position: absolute; top: -20px; left: -1px;
+    }
+    /* VIP badge overlay */
+    .vip-badge {
+      position: fixed;
+      top: 12px; left: 50%; transform: translateX(-50%);
+      z-index: 8000;
+      background: linear-gradient(90deg, #b90d3b 0%, #fff 100%);
+      color: #b90d3b;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 4px 22px 4px 18px;
+      box-shadow: 0 0 14px #d4af37cc;
+      font-size: 1.1rem;
+      display: flex; align-items: center; gap: 10px;
+      border: 2.5px solid #d4af37;
+      letter-spacing: 1px;
+      opacity: 0.94;
+      pointer-events: none;
+      font-family: 'Montserrat',serif;
+    }
+    .vip-badge-crown {
+      width: 22px; height: 22px; display: inline-block;
+      margin-right: 2px;
+      vertical-align: middle;
+      filter: drop-shadow(0 1px 8px #d4af37cc);
+    }
+    /* Unlock section styles */
+    .unlock-section {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 320px;
+      margin-top: 60px;
+    }
+    .unlock-lock {
+      font-size: 4rem;
+      color: #d4af37;
+      text-shadow: 0 0 16px #b90d3b, 0 0 8px #d4af37;
+      cursor: pointer;
+      transition: transform 0.2s, text-shadow 0.3s;
+      margin-bottom: 18px;
+    }
+    .unlock-lock:hover { transform: scale(1.12) rotate(-7deg);}
+    .unlock-message {
+      opacity: 0; max-height: 0; transition: opacity 1s, max-height 1s;
+    }
+    .unlock-message.shown {
+      opacity: 1; max-height: 800px; margin-top: 24px;
+      transition: opacity 1s, max-height 1s;
+    }
+    /* Handwritten signature animation */
+    .signature-canvas {
+      width: 320px; height: 90px;
+      display: block;
+      margin: 0 auto;
+      background: transparent;
+      filter: drop-shadow(0 0 7px #d4af37dd);
+    }
+    .mosaic-heart {
+      width: 200px; height: 180px; display: block; margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .mosaic-tile {
+      position: absolute; width: 28px; height: 28px; border-radius: 7px;
+      box-shadow: 0 0 10px #b90d3b44;
+      object-fit: cover;
+      border: 2px solid #fff8;
+      opacity: 0.95;
+    }
+    /* Fireworks CSS for fallback */
+    .fireworks-canvas { position: absolute; top:0; left:0; pointer-events: none; width:100vw; height:100vh; z-index: 30000; }
+  </style>
+</head>
+<body class="relative font-serif text-pink-50 antialiased overflow-x-hidden">
+
+<!-- VIP Badge Overlay -->
+<div class="vip-badge">
+  <img src="https://img.icons8.com/fluency/48/000000/crown.png" class="vip-badge-crown" alt="Crown" />
+  Maham My Wifey❤️ 
+</div>
+
+<!-- Entrance Curtain -->
+<div id="curtain" class="curtain">
+  <div class="curtain-gates">
+    <div class="gate left"></div>
+    <div class="gate-content">
+      <img src="https://img.icons8.com/fluency/96/000000/crown.png" width="90" alt="VIP Crown" />
+      <h1>Welcome to<br><span style="color:#d4af37">Daniyal & Maham's</span><br>1st Anniversary</h1>
+      <p class="mt-6 gold-text text-lg">Celebrations Of Our Love.</p>
+      <button id="enterBtn" class="mt-8 vip-btn px-8 py-3 text-lg shadow-lg">Open The Gates Of My Heart</button>
+    </div>
+    <div class="gate right"></div>
+  </div>
+</div>
+
+<!-- Floating Animated Backgrounds -->
+<canvas class="floating-hearts"></canvas>
+<canvas class="floating-roses"></canvas>
+<canvas class="floating-particles"></canvas>
+<canvas class="floating-stars"></canvas>
+<canvas class="floating-diamonds"></canvas>
+
+<!-- Fireworks Canvas -->
+<canvas id="fireworks" class="fireworks-canvas"></canvas>
+
+<!-- Surprise Popup: You Are My Everything (VIP reveal after curtain) -->
+<div id="surprisePopup" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+  <div class="relative p-10 vip-glow-border rounded-3xl shadow-2xl max-w-lg w-full flex flex-col items-center">
+    <img src="https://img.icons8.com/fluency/96/000000/crown.png" alt="VIP Crown" class="floating-crown" width="80" style="top:-64px;right:24px;">
+    <span class="block text-4xl md:text-5xl glow text-center mb-6" id="surpriseText">
+      You Are My Everything
+    </span>
+    <div class="w-24 h-24 mx-auto mt-2" id="popupHeart"></div>
+    <p class="mt-6 gold-text text-xl md:text-2xl text-center font-serif italic" style="text-shadow:0 0 16px #fff7;">
+      My Love, My Princess, My Wifey, My Everything.<br>
+      Our Love Story is Written With Magic And Eternity.<br>
+      <span class="glow text-2xl">Happy 1st Anniversary, Maham!</span>
+    </p>
+    <button id="closeSurprise" class="mt-10 vip-btn px-6 py-3 text-lg shadow-lg">Step Into Our Fairytale</button>
+    <div class="absolute left-0 right-0 -bottom-7 flex justify-center">
+      <span class="sparkle" style="left:48px;top:0px;"></span>
+      <span class="sparkle" style="left:128px;top:10px;"></span>
+    </div>
+  </div>
+</div>
+
+<!-- Landing Section with Infinity Animation -->
+<section id="landing" class="relative flex flex-col items-center justify-center min-h-screen z-10">
+  <div class="absolute inset-0 flex items-center justify-center z-0" id="heart-animation"></div>
+  <div class="relative z-10 flex flex-col items-center">
+    <div class="infinity-container" id="infinityLoop"></div>
+    <h1 class="glow text-center text-4xl md:text-6xl mb-4" style="letter-spacing:2px;">
+      Daniyal <span class="text-[#d4af37]">❤️</span> Maham
+    </h1>
+    <p class="text-2xl md:text-3xl gold-text mb-2 glow">Our 1st Anniversary</p>
+    <p class="text-lg md:text-xl gold-text mb-6 glow">28 October 2025</p>
+    <div class="progress-container mt-8">
+      <div id="progress-bar" class="progress-bar" style="width:0"></div>
+      <div class="milestone-dot crown" style="left:0%"></div>
+      <div class="milestone-dot" style="left:40%"></div>
+      <div class="milestone-dot" style="left:78%"></div>
+      <div class="milestone-dot crown" style="left:100%"></div>
+    </div>
+    <p class="gold-text text-sm">Our journey: First met → Our Love Story → Our Special Moments → Forever Us</p>
+  </div>
+</section>
+
+<!-- Love Counter & Countdown Section -->
+<section id="love-counter" class="relative py-12 md:py-20 flex flex-col items-center z-10">
+  <div class="vip-glow-border rounded-3xl p-8 max-w-xl w-full mx-2 shadow-xl" data-aos="zoom-in">
+    <h2 class="glow text-2xl md:text-3xl mb-3 text-center">Our Love In Numbers</h2>
+    <div class="flex flex-col md:flex-row justify-around items-center gap-6">
+      <div class="flex flex-col items-center">
+        <span class="glow text-4xl md:text-5xl" id="daysSinceMet"></span>
+        <span class="text-lg gold-text mt-1">Days since we met</span>
+      </div>
+      <div class="w-1 h-16 md:w-16 md:h-1 bg-gradient-to-b md:bg-gradient-to-r from-[#b90d3b] to-[#d4af37] rounded-full"></div>
+      <div class="flex flex-col items-center">
+        <span class="glow text-4xl md:text-5xl" id="daysToNextAnniversary"></span>
+        <span class="text-lg gold-text mt-1">Days to next 1st anniversary</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIP Timeline Section with Flip Cards -->
+<section id="timeline" class="relative py-16 md:py-24 z-10">
+  <h2 class="text-center gold-text text-3xl md:text-4xl mb-10 glow">Our Love Journey</h2>
+  <div class="relative max-w-4xl mx-auto px-2">
+    <div class="timeline absolute left-1/2 md:left-1/2 top-0 h-full border-l-4 border-[#d4af37] border-opacity-30" style="transform: translateX(-50%);"></div>
+    <div class="space-y-16">
+      <!-- Milestone 1 -->
+      <div class="relative flex md:items-center" data-aos="fade-right">
+        <div class="md:w-1/2"></div>
+        <div class="w-10 h-10 bg-gradient-to-tr from-[#b90d3b] to-[#d4af37] rounded-full absolute left-1/2 md:left-1/2 top-3 -mt-2 border-4 border-black" style="transform: translateX(-50%); z-index:2;"></div>
+        <div class="md:w-1/2 md:pl-14 mt-2 md:mt-0 flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front vip-glow-border">
+              <h3 class="glow text-xl mb-2">When I Saw You First Time</h3>
+              <img src="2.jpeg" alt="First Glance" class="rounded-xl shadow-xl w-full max-w-xs mx-auto border-2 border-[#d4af37] mb-2" />
+              <span class="gold-text text-sm mb-2 block">Click to read more</span>
+            </div>
+            <div class="flip-card-back vip-glow-border">
+              <span>
+                “The moment I saw you sitting in front of me, I couldn't take my eyes off you. I forgot everything else. I fell in love with you, and at that moment, I decided to make you my wife.”
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Milestone 2 -->
+      <div class="relative flex md:flex-row-reverse md:items-center" data-aos="fade-left">
+        <div class="md:w-1/2"></div>
+        <div class="w-10 h-10 bg-gradient-to-tr from-[#d4af37] to-[#b90d3b] rounded-full absolute left-1/2 md:left-1/2 top-3 -mt-2 border-4 border-black" style="transform: translateX(-50%); z-index:2;"></div>
+        <div class="md:w-1/2 md:pr-14 mt-2 md:mt-0 flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front vip-glow-border">
+              <h3 class="glow text-xl mb-2">Just To See You </h3>
+              <img src="3.jpeg" alt="Just To See You" class="rounded-xl shadow-xl w-full max-w-xs mx-auto border-2 border-[#b90d3b] mb-2" />
+              <span class="gold-text text-sm mb-2 block">Click to read more</span>
+            </div>
+            <div class="flip-card-back vip-glow-border">
+              <span>
+                “I only came to see you; studying was just an excuse. I was so captivated by you that I couldn't take my eyes off you, and the world around me faded away. I was lost in thoughts of you, and only you.”
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Milestone 3 -->
+      <div class="relative flex md:items-center" data-aos="fade-right">
+        <div class="md:w-1/2"></div>
+        <div class="w-10 h-10 bg-gradient-to-tr from-[#b90d3b] to-[#d4af37] rounded-full absolute left-1/2 md:left-1/2 top-3 -mt-2 border-4 border-black" style="transform: translateX(-50%); z-index:2;"></div>
+        <div class="md:w-1/2 md:pl-14 mt-2 md:mt-0 flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front vip-glow-border">
+              <h3 class="glow text-xl mb-2">Forever Mine</h3>
+              <img src="4.jpeg" alt="Forever Mine" class="rounded-xl shadow-xl w-full max-w-xs mx-auto border-2 border-[#d4af37] mb-2" />
+              <span class="gold-text text-sm mb-2 block">Click to read more</span>
+            </div>
+            <div class="flip-card-back vip-glow-border">
+              <span>
+                “Finally, the day came when I expressed my love for you and made you mine forever. Just like that, hold my hand tightly and never let me go away from you, because we are made for each other.”
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- More milestones can be added in the same format -->
+    </div>
+  </div>
+</section>
+
+<!-- Cinematic Gallery -->
+<section id="gallery" class="relative py-16 md:py-24 z-10 mt-16">
+  <h2 class="text-center gold-text text-3xl md:text-4xl mb-10 glow">Cinematic Gallery</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto px-2">
+    <a href="6.jpeg" data-lightbox="gallery" data-title="Our Love">
+      <img src="6.jpeg" alt="Gallery Image 1" class="rounded-xl shadow-lg border-2 border-[#d4af37] hover:scale-105 transition-transform duration-300" />
+    </a>
+    <a href="7.jpeg" data-lightbox="gallery" data-title="My Queen">
+      <img src="7.jpeg" alt="Gallery Image 2" class="rounded-xl shadow-lg border-2 border-[#b90d3b] hover:scale-105 transition-transform duration-300" />
+    </a>
+    <a href="8.jpeg" data-lightbox="gallery" data-title="Forever Us">
+      <img src="8.jpeg" alt="Gallery Image 3" class="rounded-xl shadow-lg border-2 border-[#d4af37] hover:scale-105 transition-transform duration-300" />
+    </a>
+
+    <a href="#video2" data-lightbox="gallery" data-title="Our Special Moments">
+      <video class="rounded-xl shadow-lg border-2 border-[#d4af37] hover:scale-105 transition-transform duration-300" controls loop preload="none" style="max-width:100%;background:#111;">
+        <source src="5.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </a>
+  </div>
+</section>
+
+<!-- Mosaic Heart Section -->
+<section class="relative py-16 md:py-24 z-10 flex flex-col items-center">
+  <h2 class="text-center gold-text text-3xl md:text-4xl mb-8 glow">A Heart Full of Memories</h2>
+  <div class="mosaic-heart" id="mosaicHeart"></div>
+  <p class="gold-text mt-4 text-center max-w-lg">Each photo is a precious piece of our love story. <br>Our love, our mosaic, our forever.</p>
+</section>
+
+<!-- VIP Ticket Generator Section -->
+<section class="relative py-12 md:py-20 flex flex-col items-center z-10">
+  <div class="vip-glow-border rounded-3xl p-8 max-w-lg w-full mx-2 shadow-xl text-center" data-aos="zoom-in">
+    <h2 class="gold-text text-2xl md:text-3xl mb-3 glow">Your Lovely Ticket</h2>
+    <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
+      <div class="flex flex-col items-center">
+        <img src="https://img.icons8.com/fluency/96/000000/ticket.png" alt="VIP Ticket" width="76"/>
+        <div class="gold-text text-lg mt-2">Admit One: <b>Maham</b><br>
+          <span class="text-xs">To Daniyal’s Heart, Forever</span><br>
+          <span class="text-xs">1st Anniversary: 28 Oct 2024</span>
+        </div>
+      </div>
+      <div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=Happy+1st+Anniversary+Begum+Jaan!+From+Daniyal&size=100x100" alt="QR Code" width="96" class="rounded-md border-2 border-[#d4af37]" />
+      </div>
+    </div>
+    <div class="gold-text text-sm mt-3">Scan for a secret message! (customize QR link in code)</div>
+  </div>
+</section>
+
+<!-- Romantic Poetry Section -->
+<section id="poetry" class="relative py-16 md:py-24 z-10 flex flex-col items-center">
+  <h2 class="text-center gold-text text-3xl md:text-4xl mb-8 glow">Shayari & Love Quotes</h2>
+  <div class="space-y-8 max-w-2xl w-full mx-2">
+    <blockquote class="vip-glow-border rounded-2xl p-6 shadow-xl text-center bg-black bg-opacity-60" data-aos="fade-up">
+      <span class="block glow text-xl md:text-2xl mb-2">
+        "Duniya ke shor mein, sukoon ka lamha hai tu,<br>
+        Bhatakti raahon ka meri, manzil ka rasta hai tu."
+      </span>
+      <small class="block gold-text mt-2">— Daniyal</small>
+    </blockquote>
+    <blockquote class="vip-glow-border rounded-2xl p-6 shadow-xl text-center bg-black bg-opacity-60" data-aos="fade-up" data-aos-delay="100">
+      <span class="block glow text-xl md:text-2xl mb-2">
+        “Har aanay wala kal, teray naam se roshan ho,<br>
+        Meri har dua ka anjaam, bas teri mohabbat ho.”
+      </span>
+      <small class="block gold-text mt-2">— Maham’s Daniyal</small>
+    </blockquote>
+    <blockquote class="vip-glow-border rounded-2xl p-6 shadow-xl text-center bg-black bg-opacity-60" data-aos="fade-up" data-aos-delay="200">
+      <span class="block glow text-xl md:text-2xl mb-2">
+        "Agar ishq ibaadat hai, toh meri ibaadat tum ho,<br>
+        Iss dil ko jis ki aadat hai, woh meri aadat tum ho."
+      </span>
+      <small class="block gold-text mt-2">— With All My Love</small>
+    </blockquote>
+  </div>
+</section>
+
+<!-- Unlockable Surprise Section -->
+<section class="unlock-section z-10" id="unlockSection">
+  <div id="lockIcon" class="unlock-lock">🔒</div>
+  <div id="unlockMsg" class="unlock-message gold-text text-2xl md:text-3xl text-center font-serif">
+    <span class="block glow">Secret Letter:</span>
+    <span class="block mt-4 text-lg font-normal gold-text">
+      My dearest Maham,<br>
+      No words can truly capture how magical you are in my life. You are My Princess, My Wifey❤️, My Begum Jaan❤️, and My Everything. With you, every day is a celebration. I promise to cherish you, honor you, and love you beyond the stars for every day of our lives.<br>
+      <span class="text-2xl gold-text glow">Forever yours,<br>Daniyal</span>
+    </span>
+  </div>
+</section>
+
+<!-- Finale Section -->
+<section id="finale" class="relative py-24 md:py-32 flex flex-col items-center z-10">
+  <div class="finale" data-aos="zoom-in-up">
+    Happy 1st Anniversary<br/><span class="gold-text">My VIP Queen</span>
+  </div>
+  <p class="text-center glow text-xl md:text-2xl mt-8 max-w-xl">
+    You are not just a part of my life you are the architect of my happiness,the very creator of my calm.
+  </p>
+  <canvas class="signature-canvas mt-12" id="signatureCanvas" width="320" height="90"></canvas>
+</section>
+
+<script>
+/* ------------------------- VIP Entrance Curtain ---------------------------- */
+const curtain = document.getElementById('curtain');
+const enterBtn = document.getElementById('enterBtn');
+enterBtn.onclick = function() {
+  // Animate gates
+  let left = curtain.querySelector('.gate.left');
+  let right = curtain.querySelector('.gate.right');
+  left.style.transform = 'translateX(-120vw)';
+  right.style.transform = 'translateX(120vw)';
+  curtain.style.opacity = '0';
+  setTimeout(() => curtain.classList.add('hidden'), 1600);
+  // Show the surprise popup after a short delay
+  setTimeout(() => document.getElementById('surprisePopup').classList.remove('hidden'), 1700);
+}
+
+/* -------------------- Floating Effects (Canvas) -------------------- */
+function randomBetween(a, b) { return a + Math.random() * (b - a); }
+function floatingHearts() { /*...*/ } // (same as before, omitted for brevity)
+function floatingRoses() { /*...*/ } // (same as before)
+function floatingParticles() { /*...*/ } // (same as before)
+function floatingStars() { /*...*/ } // (same as before)
+function floatingDiamonds() { /*...*/ } // (same as before)
+
+window.addEventListener('resize', () => {
+  floatingHearts(); floatingRoses(); floatingParticles(); floatingStars(); floatingDiamonds();
+});
+floatingHearts(); floatingRoses(); floatingParticles(); floatingStars(); floatingDiamonds();
+
+/* -------------------- Fireworks Animation -------------------- */
+function fireworksShow() {
+  const canvas = document.getElementById('fireworks');
+  if (!canvas) return;
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+  let fireworks = [];
+  const bgImage = new Image();
+  bgImage.src = '1.jpeg';
+
+  function createFirework() {
+    let colors = ["#d4af37","#b90d3b","#fffae5","#fff"];
+    let x = Math.random() * canvas.width, y = Math.random() * canvas.height * 0.5;
+    let color = colors[Math.floor(Math.random()*colors.length)];
+    let particles = [];
+    for(let i=0;i<60;i++){
+      let angle = Math.random()*2*Math.PI;
+      let speed = Math.random()*7+2;
+      particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,alpha:1,color});
+    }
+    fireworks.push(particles);
+  }
+  function animate() {
+    if (bgImage.complete && bgImage.naturalHeight !== 0) {
+        ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+    } else {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+
+    if(Math.random()>0.92) { createFirework(); }
+    for(let i=0;i<fireworks.length;i++) {
+      let fw = fireworks[i];
+      for(const p of fw) {
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,3,0,2*Math.PI);
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 24;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.restore();
+        p.x += p.vx; p.y += p.vy; p.alpha -= 0.015; p.vx *= 0.96; p.vy *= 0.96;
+      }
+      fireworks[i] = fw.filter(p=>p.alpha>0.02);
+    }
+    fireworks = fireworks.filter(fw=>fw.length>0);
+    requestAnimationFrame(animate);
+  }
+  canvas.style.display = 'block';
+  animate();
+}
+document.getElementById('closeSurprise').onclick = function() {
+  document.getElementById('surprisePopup').classList.add('hidden');
+  fireworksShow();
+}
+
+/* -------------------- Heart SVG Animation -------------------- */
+function heartSVG() { /*...*/ } // (same as before)
+heartSVG();
+
+/* -------------------- Infinity Animation -------------------- */
+function infinityLoop() {
+  const el = document.getElementById('infinityLoop');
+  el.innerHTML = `
+    <svg width="240" height="100" viewBox="0 0 240 100">
+      <path id="infPath" d="M30,50 Q60,10 120,50 Q180,90 210,50 Q180,10 120,50 Q60,90 30,50Z" fill="none" stroke="#d4af37" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 14" />
+      <text id="infText1" x="60" y="32" fill="#fff" font-size="1.2em" font-weight="bold" font-family="serif">Daniyal</text>
+      <text id="infText2" x="140" y="85" fill="#fff" font-size="1.2em" font-weight="bold" font-family="serif">Maham</text>
+    </svg>
+  `;
+  gsap.to("#infPath", { duration: 2.7, repeat: -1, yoyo: true, ease: "power1.inOut", attr: { strokeDashoffset: 22 } });
+}
+infinityLoop();
+
+/* -------------------- Love Counter -------------------- */
+const metDate = new Date("2024-10-28");
+function updateLoveCounter() {
+  const now = new Date();
+  const daysSince = Math.floor((now - metDate) / (1000 * 60 * 60 * 24));
+  let next = new Date(metDate); next.setFullYear(now.getFullYear());
+  if (now > next) next.setFullYear(now.getFullYear() + 1);
+  const daysToNext = Math.ceil((next - now) / (1000 * 60 * 60 * 24));
+  document.getElementById('daysSinceMet').textContent = daysSince >= 0 ? daysSince : 0;
+  document.getElementById('daysToNextAnniversary').textContent = daysToNext;
+  // Progress bar
+  let totalDays = Math.floor((next - new Date(metDate.getFullYear()-1,metDate.getMonth(),metDate.getDate()))/(1000*60*60*24));
+  let progress = (totalDays-daysToNext)/totalDays;
+  document.getElementById('progress-bar').style.width = (progress*100).toFixed(1)+"%";
+}
+updateLoveCounter();
+setInterval(updateLoveCounter, 60 * 60 * 1000);
+
+/* -------------------- Flip Card Click for Mobile -------------------- */
+document.querySelectorAll('.flip-card').forEach(card=>{
+  card.addEventListener('click',function(){ this.classList.toggle('flipped'); });
+});
+
+/* -------------------- Mosaic Heart -------------------- */
+function mosaicHeart() {
+  const photos = [
+    "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80",
+    "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=200&q=80",
+    "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=200&q=80",
+    "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=200&q=80",
+    "https://images.unsplash.com/photo-1465101178521-c1a9136a6b9f?auto=format&fit=crop&w=200&q=80"
+  ];
+  const pos = [
+    [90,10],[120,22],[54,30],[145,30],[80,60],[110,55],[60,85],[90,110],[125,95],[158,86],[36,74],[170,56],[80,140],[120,125]
+  ];
+  const heart = document.getElementById('mosaicHeart');
+  heart.innerHTML = "";
+  for(let i=0;i<pos.length;i++){
+    let img = document.createElement('img');
+    img.src = photos[i%photos.length];
+    img.className = "mosaic-tile";
+    img.style.left = pos[i][0]+"px"; img.style.top = pos[i][1]+"px";
+    img.style.opacity = 0;
+    heart.appendChild(img);
+    setTimeout(()=>img.style.opacity=1,300+90*i);
+  }
+}
+mosaicHeart();
+
+/* -------------------- Unlockable Section -------------------- */
+const lockIcon = document.getElementById('lockIcon');
+const unlockMsg = document.getElementById('unlockMsg');
+let unlocked = false;
+lockIcon.onclick = () => {
+  if(unlocked) return;
+  lockIcon.textContent = "🔓";
+  unlockMsg.classList.add('shown');
+  unlocked = true;
+  sparkleAt(lockIcon.offsetLeft+30, lockIcon.offsetTop+20);
+};
+
+/* -------------------- Signature Reveal -------------------- */
+function signatureReveal() {
+  const canvas = document.getElementById('signatureCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.strokeStyle = "#d4af37"; ctx.lineWidth = 3.0; ctx.shadowColor = "#fff"; ctx.shadowBlur = 8;
+  const points = [
+    [30,70],[50,60],[70,50],[120,65],[160,35],[200,60],[195,80],[160,80],[110,70],[80,80]
+  ];
+  let i = 0;
+  function draw() {
+    if(i===0) { ctx.beginPath(); ctx.moveTo(points[0][0],points[0][1]); i++;}
+    else if(i<points.length) {
+      ctx.lineTo(points[i][0],points[i][1]); ctx.stroke(); i++;
+    }
+    if(i<points.length) setTimeout(draw, 360);
+    else {
+      ctx.font = "italic 1.5em Pacifico,serif";
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = "#fff";
+      ctx.fillText("Daniyal",130,82);
+    }
+  }
+  draw();
+}
+signatureReveal();
+
+/* -------------------- Sparkles -------------------- */
+function sparkleAt(x, y) {
+  const s = document.createElement('span');
+  s.className = "sparkle";
+  s.style.left = (x-7) + 'px';
+  s.style.top = (y-7) + 'px';
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 1000);
+}
+document.addEventListener('mousemove', e => {
+  if (Math.random() > 0.984) sparkleAt(e.clientX, e.clientY);
+});
+document.addEventListener('click', e => sparkleAt(e.clientX, e.clientY));
+
+/* -------------------- AOS and GSAP Scroll Animations -------------------- */
+AOS.init({ duration: 1200, once: true, offset: 80, easing: 'ease' });
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray("#timeline .vip-glow-border").forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: "top 80%", end: "bottom top", scrub: 0.5 },
+    y: i % 2 === 0 ? 60 : -60,
+    opacity: 0,
+    scale: 0.98,
+    duration: 2.2,
+    ease: "power2.out"
+  });
+});
+gsap.from(".finale", {
+  scrollTrigger: { trigger: "#finale", start: "top 80%", once: true },
+  opacity: 0, scale: 0.7, duration: 1.9, ease: "elastic.out(1,0.7)"
+});
+
+/* -------------------- Smooth Scroll for Internal Links -------------------- */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) {
+      e.preventDefault(); t.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
+</script>
+<!--
+==================== CUSTOMIZATION NOTES ====================
+- Change names/1st anniversary date in #landing section and meta
+- Change start date in metDate above
+- Add timeline milestones by duplicating flip card blocks in #timeline
+- Add your photos/videos to #gallery and #mosaicHeart
+- Edit/add shayari/poetry in #poetry section
+- All magical effects are handled for you!
+-->
+</body>
+</html>
