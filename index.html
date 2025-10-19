@@ -273,21 +273,14 @@
     }
     /* Handwritten signature animation */
     .signature-canvas {
-      max-width: 320px; 
-      width: 80%; 
-      height: auto;
-      aspect-ratio: 320 / 90;
+      width: 320px; height: 90px;
       display: block;
       margin: 0 auto;
       background: transparent;
       filter: drop-shadow(0 0 7px #d4af37dd);
     }
     .mosaic-heart {
-      max-width: 200px;
-      width: 60%;
-      aspect-ratio: 200 / 180;
-      display: block; 
-      margin: 0 auto;
+      width: 200px; height: 180px; display: block; margin: 0 auto;
       position: relative;
       z-index: 2;
     }
@@ -872,24 +865,10 @@ lockIcon.onclick = () => {
 function signatureReveal() {
   const canvas = document.getElementById('signatureCanvas');
   const ctx = canvas.getContext('2d');
-  
-  const baseWidth = 320;
-  const baseHeight = 90;
-  const scale = canvas.offsetWidth / baseWidth;
-  
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetWidth * (baseHeight / baseWidth);
-  
-  ctx.strokeStyle = "#d4af37"; 
-  ctx.lineWidth = 3.0 * scale;
-  ctx.shadowColor = "#fff"; 
-  ctx.shadowBlur = 8 * scale;
-
-  const basePoints = [
+  ctx.strokeStyle = "#d4af37"; ctx.lineWidth = 3.0; ctx.shadowColor = "#fff"; ctx.shadowBlur = 8;
+  const points = [
     [30,70],[50,60],[70,50],[120,65],[160,35],[200,60],[195,80],[160,80],[110,70],[80,80]
   ];
-  const points = basePoints.map(p => [p[0] * scale, p[1] * scale]);
-
   let i = 0;
   function draw() {
     if(i===0) { ctx.beginPath(); ctx.moveTo(points[0][0],points[0][1]); i++;}
@@ -898,10 +877,10 @@ function signatureReveal() {
     }
     if(i<points.length) setTimeout(draw, 360);
     else {
-      ctx.font = `italic ${1.5*scale}em Pacifico,serif`;
+      ctx.font = "italic 1.5em Pacifico,serif";
       ctx.shadowBlur = 0;
       ctx.fillStyle = "#fff";
-      ctx.fillText("Daniyal",130 * scale, 82 * scale);
+      ctx.fillText("Daniyal",130,82);
     }
   }
   draw();
