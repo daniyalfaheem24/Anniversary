@@ -295,83 +295,139 @@
     .fireworks-canvas { position: absolute; top:0; left:0; pointer-events: none; width:100vw; height:100vh; z-index: 30000; }
 
     /* Responsive Adjustments */
+    * {
+      box-sizing: border-box;
+    }
+    @media (max-width: 768px) {
+      .timeline:before { 
+        left: 20px !important; 
+      }
+      .md\:pl-14, .md\:pr-14 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .timeline .relative.flex {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+      }
+      .timeline .md\:w-1\/2 {
+        width: 100% !important;
+      }
+      .timeline .w-10.h-10 {
+        left: 20px !important;
+      }
+    }
+
     @media (max-width: 640px) {
+      body {
+        -webkit-text-size-adjust: 100%;
+      }
+      .p-10 { padding: 1.5rem; }
+      .p-8 { padding: 1.25rem; }
+      .p-6 { padding: 1rem; }
+
       .glow {
-        font-size: 1.5rem; /* Smaller glow text */
+        font-size: 1.4rem;
       }
       .gold-text {
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
+      h1.glow { font-size: 2.2rem; }
+      h2.glow { font-size: 1.8rem; }
+
       .finale {
-        font-size: clamp(2rem, 10vw, 4rem); /* Smaller finale text */
+        font-size: clamp(2.2rem, 12vw, 4.5rem);
       }
       .vip-badge {
-        font-size: 0.9rem;
-        padding: 2px 16px 2px 12px;
-        gap: 6px;
+        font-size: 0.8rem;
+        padding: 2px 14px 2px 10px;
+        gap: 5px;
       }
       .vip-badge-crown {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
       }
       .curtain-gates {
         width: 95vw;
         height: 90vh;
       }
-      .gate-content h1 {
-        font-size: 1.8rem;
+      .gate-content {
+        width: 90%;
       }
-      #surprisePopup .p-10 {
+      .gate-content h1 {
+        font-size: 1.6rem;
+      }
+      .gate-content .vip-btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+      }
+
+      #surprisePopup .vip-glow-border {
+        width: 90vw;
         padding: 1.5rem;
       }
       #surpriseText {
-        font-size: 2rem;
+        font-size: 1.9rem;
       }
-      .infinity-container {
-        width: 180px;
-        height: 75px;
-      }
-      .flip-card, .flip-card-inner, .flip-card-front, .flip-card-back {
-        min-height: 220px;
-      }
-      .flip-card-back {
+      #surprisePopup .gold-text {
         font-size: 1rem;
-        padding: 16px;
       }
-      .mosaic-heart {
-        width: 150px;
-        height: 135px;
+
+      .infinity-container {
+        transform: scale(0.8);
       }
-      .mosaic-tile {
-        width: 21px;
-        height: 21px;
-        border-radius: 5px;
+      .progress-container {
+        max-width: 90%;
       }
-      .unlock-section {
-        margin-top: 30px;
-        min-height: 250px;
+
+      .flip-card, .flip-card-inner, .flip-card-front, .flip-card-back {
+        min-height: auto;
       }
-      .unlock-lock {
-        font-size: 3rem;
-      }
-      .signature-canvas {
-        width: 240px;
-        height: 68px;
-      }
-      .vip-glow-border {
+      .flip-card-front {
         padding: 1rem;
       }
+      .flip-card-back {
+        font-size: 0.9rem;
+        padding: 1rem;
+      }
+      .flip-card-front img {
+        max-width: 80%;
+      }
+
+      .grid-cols-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .mosaic-heart {
+        transform: scale(0.8);
+      }
+
+      .vip-glow-border.max-w-lg, .vip-glow-border.max-w-xl {
+        max-width: 90vw;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       #love-counter .glow {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
       }
       #poetry .glow {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
       }
-      .grid-cols-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      blockquote.vip-glow-border {
+        width: 90vw;
+        margin: 1rem auto;
       }
-      .gap-4 {
-        gap: 0.75rem;
+
+      .unlock-message .glow {
+        font-size: 1.5rem;
+      }
+      .unlock-message .gold-text {
+        font-size: 0.9rem;
+      }
+
+      .signature-canvas {
+        transform: scale(0.8);
       }
     }
   </style>
