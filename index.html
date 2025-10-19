@@ -273,14 +273,21 @@
     }
     /* Handwritten signature animation */
     .signature-canvas {
-      width: 320px; height: 90px;
+      max-width: 320px; 
+      width: 80%; 
+      height: auto;
+      aspect-ratio: 320 / 90;
       display: block;
       margin: 0 auto;
       background: transparent;
       filter: drop-shadow(0 0 7px #d4af37dd);
     }
     .mosaic-heart {
-      width: 200px; height: 180px; display: block; margin: 0 auto;
+      max-width: 200px;
+      width: 60%;
+      aspect-ratio: 200 / 180;
+      display: block; 
+      margin: 0 auto;
       position: relative;
       z-index: 2;
     }
@@ -789,7 +796,7 @@ heartSVG();
 function infinityLoop() {
   const el = document.getElementById('infinityLoop');
   el.innerHTML = `
-    <svg width="240" height="100" viewBox="0 0 240 100">
+    <svg viewBox="0 0 240 100" style="width: 100%; height: auto;">
       <path id="infPath" d="M30,50 Q60,10 120,50 Q180,90 210,50 Q180,10 120,50 Q60,90 30,50Z" fill="none" stroke="#d4af37" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 14" />
       <text id="infText1" x="60" y="32" fill="#fff" font-size="1.2em" font-weight="bold" font-family="serif">Daniyal</text>
       <text id="infText2" x="140" y="85" fill="#fff" font-size="1.2em" font-weight="bold" font-family="serif">Maham</text>
@@ -865,10 +872,24 @@ lockIcon.onclick = () => {
 function signatureReveal() {
   const canvas = document.getElementById('signatureCanvas');
   const ctx = canvas.getContext('2d');
-  ctx.strokeStyle = "#d4af37"; ctx.lineWidth = 3.0; ctx.shadowColor = "#fff"; ctx.shadowBlur = 8;
-  const points = [
+  
+  const baseWidth = 320;
+  const baseHeight = 90;
+  const scale = canvas.offsetWidth / baseWidth;
+  
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetWidth * (baseHeight / baseWidth);
+  
+  ctx.strokeStyle = "#d4af37"; 
+  ctx.lineWidth = 3.0 * scale;
+  ctx.shadowColor = "#fff"; 
+  ctx.shadowBlur = 8 * scale;
+
+  const basePoints = [
     [30,70],[50,60],[70,50],[120,65],[160,35],[200,60],[195,80],[160,80],[110,70],[80,80]
   ];
+  const points = basePoints.map(p => [p[0] * scale, p[1] * scale]);
+
   let i = 0;
   function draw() {
     if(i===0) { ctx.beginPath(); ctx.moveTo(points[0][0],points[0][1]); i++;}
@@ -877,10 +898,10 @@ function signatureReveal() {
     }
     if(i<points.length) setTimeout(draw, 360);
     else {
-      ctx.font = "italic 1.5em Pacifico,serif";
+      ctx.font = `italic ${1.5*scale}em Pacifico,serif`;
       ctx.shadowBlur = 0;
       ctx.fillStyle = "#fff";
-      ctx.fillText("Daniyal",130,82);
+      ctx.fillText("Daniyal",130 * scale, 82 * scale);
     }
   }
   draw();
