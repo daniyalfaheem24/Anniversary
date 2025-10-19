@@ -293,6 +293,87 @@
     }
     /* Fireworks CSS for fallback */
     .fireworks-canvas { position: absolute; top:0; left:0; pointer-events: none; width:100vw; height:100vh; z-index: 30000; }
+
+    /* Responsive Adjustments */
+    @media (max-width: 640px) {
+      .glow {
+        font-size: 1.5rem; /* Smaller glow text */
+      }
+      .gold-text {
+        font-size: 1rem;
+      }
+      .finale {
+        font-size: clamp(2rem, 10vw, 4rem); /* Smaller finale text */
+      }
+      .vip-badge {
+        font-size: 0.9rem;
+        padding: 2px 16px 2px 12px;
+        gap: 6px;
+      }
+      .vip-badge-crown {
+        width: 18px;
+        height: 18px;
+      }
+      .curtain-gates {
+        width: 95vw;
+        height: 90vh;
+      }
+      .gate-content h1 {
+        font-size: 1.8rem;
+      }
+      #surprisePopup .p-10 {
+        padding: 1.5rem;
+      }
+      #surpriseText {
+        font-size: 2rem;
+      }
+      .infinity-container {
+        width: 180px;
+        height: 75px;
+      }
+      .flip-card, .flip-card-inner, .flip-card-front, .flip-card-back {
+        min-height: 220px;
+      }
+      .flip-card-back {
+        font-size: 1rem;
+        padding: 16px;
+      }
+      .mosaic-heart {
+        width: 150px;
+        height: 135px;
+      }
+      .mosaic-tile {
+        width: 21px;
+        height: 21px;
+        border-radius: 5px;
+      }
+      .unlock-section {
+        margin-top: 30px;
+        min-height: 250px;
+      }
+      .unlock-lock {
+        font-size: 3rem;
+      }
+      .signature-canvas {
+        width: 240px;
+        height: 68px;
+      }
+      .vip-glow-border {
+        padding: 1rem;
+      }
+      #love-counter .glow {
+        font-size: 2.5rem;
+      }
+      #poetry .glow {
+        font-size: 1.25rem;
+      }
+      .grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .gap-4 {
+        gap: 0.75rem;
+      }
+    }
   </style>
 </head>
 <body class="relative font-serif text-pink-50 antialiased overflow-x-hidden">
